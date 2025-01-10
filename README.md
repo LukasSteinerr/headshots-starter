@@ -8,6 +8,7 @@ This project was built to give developers & makers a great starting point into b
 
 [![Headshot AI Demo](/public/demo.png)](https://headshots-starter.vercel.app/)
 
+
 ## Incoming changes
 
 Incoming [PR]((https://github.com/astriaai/headshots-starter/pull/121)) has been merged to allow usage of  Astria's packs API which helps you avoid hardcoding prompts in your code as well as offering different packs of prompts, and switching to the new Flux model fine-tuning easily.
