@@ -35,8 +35,8 @@ const StripePricingTable = ({ user }: Props) => {
   return (
     <div className='flex flex-1 flex-col w-full'>
       <stripe-pricing-table
-          pricing-table-id="prctbl_1P0TL0C3ic5Sd20TGpWOU2Fi"
-          publishable-key="pk_live_51P0SikC3ic5Sd20T9QRaRKIkqy8l951LDgeOxcP24ZRXHnQzjnOFM7tfhsYdWksn1wNBdejJzvaxXGq0yRAxm14A00Py0XreGk"
+          pricing-table-id="prctbl_1QftLwLG6oKs29fUaGwzuVTP"
+          publishable-key="pk_test_51QcQv7LG6oKs29fUmwWZn4gNKIRbWwxvyYvv1kl2ZZ4XJyYPbPYU1FrLQZvJHsTYesvbBlhTatkw30mDGUXCb7ym00oKn6hkt5"
           client-reference-id={user.id}
           customer-email={user.email}
       >
@@ -46,3 +46,6 @@ const StripePricingTable = ({ user }: Props) => {
 }
 
 export default StripePricingTable;
+
+
+
