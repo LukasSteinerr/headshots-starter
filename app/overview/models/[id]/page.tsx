@@ -4,6 +4,7 @@ import ClientSideModel from "@/components/realtime/ClientSideModel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Database } from "@/types/supabase";
+import JSZip from "jszip";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";
@@ -51,6 +52,34 @@ export default async function Index({ params }: { params: { id: string } }) {
         </Link>
         <div className="flex flex-row gap-2 align-middle text-center items-center pb-4">
           <h1 className="text-xl">{model.name}</h1>
+          <Button
+            variant="outline"
+            size="sm"
+            className="ml-2"
+            onClick={async () => {
+              if (images && images.length > 0) {
+                const zip = new JSZip();
+                const promises = images.map(async (image, index) => {
+                  const response = await fetch(image.uri);
+                  const blob = await response.blob();
+                  zip.file(`image_${index + 1}.png`, blob);
+                });
+                
+                await Promise.all(promises);
+                const content = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(content);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${model.name}_images.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }
+            }}
+          >
+            Download Images
+          </Button>
           <div>
             <Badge
               variant={model.status === "finished" ? "default" : "secondary"}

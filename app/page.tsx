@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 import hero from "/public/hero.png";
 
-import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import ExplainerSection from "@/components/ExplainerSection";
 import PricingSection from "@/components/PricingSection";
 
@@ -35,7 +35,10 @@ export default async function Index() {
           </p>
           <div className="flex flex-col space-y-2">
             <Link href="/login">
-              <Button className="w-full lg:w-1/2">Get Your Headshots</Button>
+              <InteractiveHoverButton 
+                className="w-full lg:w-1/2"
+                text="Get Your Headshots"
+              />
             </Link>
             <p className="text-sm text-gray-500 italic">
               Trusted by professionals worldwide. Quick and efficient.
